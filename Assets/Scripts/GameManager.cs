@@ -8,8 +8,10 @@ public class GameManager : MonoBehaviour
     [Header("UI Regerences")]
     [SerializeField]
     private TMP_Text playerPointsText;
- 
 
+
+    [SerializeField]
+    public Material[] materials;
 
     private int playerPoints;
     public int PlayerPoints
@@ -26,18 +28,14 @@ public class GameManager : MonoBehaviour
 
 
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            PlayerPoints++;
-        }
-    }
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        PlayerPoints++;
+    //    }
+    //}
 }

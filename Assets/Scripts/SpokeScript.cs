@@ -8,22 +8,51 @@ public class SpokeScript : MonoBehaviour
 
     public event EventHandler OnSpokeCollided;
 
+    [SerializeField]
+    private GameManager gameManager;
+
+    [SerializeField]
+    private Material spokeMaterial;
 
     private void Start()
     {
-        OnSpokeCollided += Testing_OnSpokeCollided;
+        OnSpokeCollided += AwardPointsBasedOnSpokeColor;
     }
 
-    private void Testing_OnSpokeCollided(object sender, EventArgs e)
+    private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("space!");
+        OnSpokeCollided?.Invoke(this, EventArgs.Empty);
     }
-    private void Update()
+
+    private void AwardPointsBasedOnSpokeColor(object sender, EventArgs e)
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
-            //REFACTORED BELOW: if(OnSpokeCollided != null) OnSpokeCollided(this, EventArgs.Empty);
-            OnSpokeCollided?.Invoke(this, EventArgs.Empty);
+        int materialIndex;
+        for (int i = 0; i <= gameManager.materials.Length - 1; i++)
+        {
+            if (gameManager.materials[i] == spokeMaterial)
+            {
+                materialIndex = i;
+                AddPoints(materialIndex);
+            }
         }
     }
 
+    private void AddPoints(int materialIndex)
+    {
+        switch (materialIndex)
+        {
+            case 0: gameManager.PlayerPoints += 10;
+                break;
+            case 1: gameManager.PlayerPoints += 15;
+                break;
+            case 2: gameManager.PlayerPoints += 20;
+                break;
+                
+        }
+    }
+
+    private void OnDestroy()
+    {
+        OnSpokeCollided -= AwardPointsBasedOnSpokeColor;
+    }
 }
