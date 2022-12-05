@@ -12,6 +12,16 @@ public class InstatiatedBall : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
+
+    private void Update()
+    {
+        if(transform.position.y <= -50)
+        {
+            gameManager.isPlayerTurn = true;
+            Destroy(gameObject);
+           
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Base Floor"))
@@ -23,6 +33,7 @@ public class InstatiatedBall : MonoBehaviour
     private IEnumerator DestroyBall()
     {
         yield return new WaitForSeconds(2);
+        gameManager.isPlayerTurn = true;
         gameManager.UpdateUI();
         Destroy(gameObject);
     }

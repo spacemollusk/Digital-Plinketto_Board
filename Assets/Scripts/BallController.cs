@@ -6,6 +6,9 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     [SerializeField]
+    GameManager gameManager;
+
+    [SerializeField]
     private InstatiatedBall prefabBall;
 
     [SerializeField]
@@ -33,8 +36,12 @@ public class BallController : MonoBehaviour
         {
             return;
         }
-        endPos.z = endPosZValue;
-        worldSpaceSpawnPos = Camera.main.ScreenToWorldPoint(endPos);
-        Instantiate(prefabBall,worldSpaceSpawnPos,Quaternion.identity);
+        if (gameManager.isPlayerTurn)
+        {
+            endPos.z = endPosZValue;
+            worldSpaceSpawnPos = Camera.main.ScreenToWorldPoint(endPos);
+            Instantiate(prefabBall, worldSpaceSpawnPos, Quaternion.identity);
+            gameManager.isPlayerTurn = false;
+        }
     }
 }

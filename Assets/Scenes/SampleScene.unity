@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -288,6 +288,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 230034678f048d34986b2ca7595192a9, type: 2}
   - {fileID: 2100000, guid: 7e947c6552402844eb4620b384cabe55, type: 2}
   - {fileID: 2100000, guid: a5810a9794d9c1e469e1f2bfd39c359b, type: 2}
+  isPlayerTurn: 0
 --- !u!4 &161921562
 Transform:
   m_ObjectHideFlags: 0
@@ -295,8 +296,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161921560}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2200437, y: -0.54314613, z: 1.7401679}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.2200437, y: -0.54314613, z: 1.740168}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -883,9 +884,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 56.8
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 1.89
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4306,7 +4307,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh48346
+  m_Name: pb_Mesh102078
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9542,6 +9543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e65dacdfe0dbe64fb8ffc5ceae8dd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 161921561}
   prefabBall: {fileID: 7804391047182108963, guid: e03a82da53345144ab88a811d85ecb80,
     type: 3}
   endPosZValue: 3

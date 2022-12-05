@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public Material[] materials;
 
+    public bool isPlayerTurn;
+
     private int highScore = 0;
     private int roundNumber = 1;
     private int playerPoints = 0;
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SetUIOnStart();
+        isPlayerTurn = true;
     }
 
     private void SetUIOnStart()
