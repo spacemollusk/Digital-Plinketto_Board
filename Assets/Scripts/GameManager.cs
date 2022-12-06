@@ -5,15 +5,24 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("UI Regerences")]
+  
+    [Header("UI References")]
     [SerializeField]
     private TMP_Text playerPointsText;
+    [SerializeField]
+    private TMP_Text roundNumberText;
+    [SerializeField]
+    private TMP_Text highScoreNumberText;
 
-
+    [Header("Materials Array")]
     [SerializeField]
     public Material[] materials;
 
-    private int playerPoints;
+    public bool isPlayerTurn;
+
+    private int highScore = 0;
+    private int roundNumber = 1;
+    private int playerPoints = 0;
     public int PlayerPoints
     {
         get
@@ -25,17 +34,27 @@ public class GameManager : MonoBehaviour
             playerPoints = value;
             playerPointsText.text = value.ToString();
         }
-
-
     }
-  
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        PlayerPoints++;
-    //    }
-    //}
+    private void Start()
+    {
+        SetUIOnStart();
+        isPlayerTurn = true;
+    }
+
+    private void SetUIOnStart()
+    { 
+        roundNumberText.text = roundNumber.ToString();
+        highScoreNumberText.text = highScore.ToString();
+        playerPointsText.text = playerPoints.ToString();
+    }
+    public void UpdateUI()
+    {
+        highScore += playerPoints;
+        playerPoints = 0;
+        roundNumber++;
+        roundNumberText.text = roundNumber.ToString();
+        highScoreNumberText.text = highScore.ToString();
+        playerPointsText.text = playerPoints.ToString();
+    }
 }
